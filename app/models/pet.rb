@@ -1,23 +1,26 @@
 class Pet < ApplicationRecord
-
+  belongs_to :client
+  has_many :pet_histories
+  accepts_nested_attributes_for :pet_histories, :client
+  
   def history_count
-    #TODO-implement
+    pet_histories.count
   end
 
   def avg_weight
-    #TODO-implement
+    pet_histories.average("weight")
   end
 
   def avg_height
-    #TODO-implement
+    pet_histories.average("heigth")
   end
 
   def max_weight
-    #TODO-implement
+    pet_histories.maximum("weight")
   end
 
   def max_height
-    #TODO-implement
+    pet_histories.maximum("heigth")
   end
 
 end
